@@ -44,6 +44,7 @@ function shwoNotes() {
                <h5 class="card-title">${titleObj[index]}</h5>
                <p class="card-text">${element}</p>
                <button class="btn btn-primary" id="${index + 1}" onclick="removeNotes(this.id)">Remove Note</button>
+               <button onclick="handleEditData(this)" type="button" id="${index + 1}" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Edit</button>
            </div>
        </div>`;
 
@@ -57,6 +58,36 @@ function shwoNotes() {
         }
 
     }
+}
+
+// Handle Edit Data 
+const handleEditData = (self) =>{
+    let notes = localStorage.getItem('notes')
+    let title = localStorage.getItem('title')
+    let notesObj = JSON.parse(notes)
+    let  titleObj = JSON.parse(title)
+    let taskName = document.getElementById('task-name');
+    let taskDescription = document.getElementById('task-description');
+    document.getElementById('update-btn').id= self.id;
+    taskName.value = titleObj[Number(self.id) - 1]
+    taskDescription.value = notesObj[Number(self.id) - 1]
+}
+
+
+// Handle Update Action Data 
+const handleUpdateAction = (self) =>{
+    let notes = localStorage.getItem('notes')
+    let title = localStorage.getItem('title')
+    let notesObj = JSON.parse(notes)
+    let  titleObj = JSON.parse(title)
+    let taskName = document.getElementById('task-name');
+    let taskDescription = document.getElementById('task-description');
+    titleObj[Number(self.id) - 1] = taskName.value
+    notesObj[Number(self.id) - 1] = taskDescription.value 
+    localStorage.setItem('notes', JSON.stringify(notesObj))
+    localStorage.setItem('title', JSON.stringify(titleObj))
+    shwoNotes();
+    document.getElementById("close").click();
 }
 
 
