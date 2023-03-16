@@ -1,100 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo App</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notes App</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- Link Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
 
-</head>
+    <!-- Link Font awsome Icon -->
+    <link
+      rel="stylesheet"
+      data-purpose="Layout StyleSheet"
+      title="Default"
+      disabled
+      href="/css/app-af6a05f42b013986b481566363f0186f.css?vsn=d"
+    />
+    <link
+      rel="stylesheet"
+      data-purpose="Layout StyleSheet"
+      title="Web Awesome"
+      href="/css/app-wa-5498a6af9606f4bf5ea80b9d54f88b02.css?vsn=d"
+    />
 
-<body>
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.3.0/css/all.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.3.0/css/sharp-solid.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.3.0/css/sharp-regular.css"
+    />
+
+    <!-- Custom CSS -->
+    <style>
+      body::before {
+        content: "";
+        background-image: url("https://viscon.vis.ethz.ch/assets/bg.png");
+        background-size: cover;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        opacity: 0.75;
+      }
+    </style>
+  </head>
+
+  <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Notes App</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                </ul>
-                <form class="d-flex">
-                    <input id="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                </form>
-            </div>
+      <div class="container">
+        <a class="navbar-brand" href="#"
+          ><i class="fa-light fa-clipboard-list-check"></i> ToDo App</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+          <form class="d-flex">
+            <input
+              id="search"
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+          </form>
         </div>
+      </div>
     </nav>
 
     <div class="container my-3">
-        <h1>Welcome to Notes App</h1>
+      <h1>Welcome to ToDo App</h1>
 
-
-        <div class="card my-5">
-            <div class="card-body">
-                <h5 class="card-title"><textarea placeholder="Task Name" class="form-control" id="titleText" rows="1"></textarea></h5>
-                <p class="card-text">
-                <div class="mb-3">
-                    <textarea placeholder="Task Description" class="form-control" id="textAreaInput" rows="3"></textarea>
-                </div>
-                </p>
-                <button class="btn btn-primary" id="addBtn">Add Note</button>
+      <div class="card my-5">
+        <div class="card-body">
+          <h5 class="card-title">
+            <textarea
+              placeholder="Task Name"
+              class="form-control"
+              id="titleText"
+              rows="1"
+              style="
+                resize: none;
+                border: unset;
+                border-bottom: 1px solid #eee;
+                outline: unset;
+              "
+            ></textarea>
+          </h5>
+          <div class="card-text">
+            <div class="mb-3">
+              <textarea
+                placeholder="Task Description"
+                class="form-control"
+                id="textAreaInput"
+                rows="5"
+                style="
+                  resize: none;
+                  border: unset;
+                  border-bottom: 1px solid #eee;
+                  outline: unset;
+                "
+              ></textarea>
             </div>
+          </div>
+          <button class="btn btn-primary" id="addBtn">
+            <i class="fa-solid fa-plus"></i> Add Task
+          </button>
         </div>
-        <hr>
-        <h2>Your Notes</h2>
-        <hr>
-        <div class="row container-fluid" id="notes">
-        </div>
+      </div>
+      <hr />
+      <h2>Your Notes</h2>
+      <hr />
+      <div class="row container-fluid" id="notes"></div>
 
-        <div class="row container-fluid" id="notFound"></div>
+      <div class="row container-fluid" id="notFound"></div>
     </div>
 
-    
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Task</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Task Name:</label>
-            <input type="text" class="form-control" id="task-name">
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Task</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Task Description:</label>
-            <textarea class="form-control" id="task-description"></textarea>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label"
+                  >Task Name:</label
+                >
+                <input type="text" class="form-control" id="task-name" />
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label"
+                  >Task Description:</label
+                >
+                <textarea class="form-control" id="task-description"></textarea>
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button onclick="handleUpdateAction(this)" id="update-btn" type="button" class="btn btn-primary">Update</button>
+          <div class="modal-footer">
+            <button
+              type="button"
+              id="close"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              onclick="handleUpdateAction(this)"
+              id="update-btn"
+              type="button"
+              class="btn btn-primary update-btn"
+            >
+              Update
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src='noteAppJS.js'></script>
-
-</body>
-
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="noteAppJS.js"></script>
+  </body>
 </html>
